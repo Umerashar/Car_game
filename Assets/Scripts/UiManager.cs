@@ -5,6 +5,7 @@ using UnityEngine;
 public class UiManager : MonoBehaviour
 {
     public GameObject GameOverMenu;
+    
 
     private void OnEnable()
     {
@@ -20,4 +21,5 @@ public class UiManager : MonoBehaviour
     {
         GameOverMenu.SetActive(true);
     }
+    
 }

@@ -8,6 +8,7 @@ using TMPro;
 public class HealthScript : MonoBehaviour
 {
     public static event Action OnPlayerDie;
+    
 
     public float mexHealth = 100;
      public float CurrentHealth;
