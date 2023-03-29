@@ -16,6 +16,6 @@ public class Splash : MonoBehaviour
     IEnumerator SplashScreen()
     {
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene("Track");
+        SceneManager.LoadScene("MainMenu");
     }
 }

@@ -6,44 +6,54 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     public int Level = 0;
-    public List<Button> LevelButtons = new List<Button>();
+    public List<Button> LevelButtons = new();
 
     private void Start()
     {
-        if (PlayerPrefs.HasKey("LevelCleared"))
-        {
-            UpdateLevel(PlayerPrefs.GetInt("LevelCleared"));
+        int LevelAt = PlayerPrefs.GetInt("LevelAt", 1);
 
-        }
-        else
-        {
-            UpdateLevel(Level);
-            PlayerPrefs.SetInt("LevelCleared", Level);
-        }
-        
-    }
-    public void UpdateLevel(int numlevel)
-    {
         for (int i = 0; i < LevelButtons.Count; i++)
         {
-            if(i<=numlevel)
-            {
-                LevelButtons[i].interactable = true;
-            }
-            else
+            if (i+1 > LevelAt)
             {
                 LevelButtons[i].interactable = false;
             }
         }
+       //// PlayerPrefs.DeleteKey("LevelCleared");
+       // if (PlayerPrefs.HasKey("LevelCleared"))
+       // {
+       //     UpdateLevel(PlayerPrefs.GetInt("LevelCleared"));
+
+       // }
+       // else
+       // {
+       //     UpdateLevel(Level);
+       //     PlayerPrefs.SetInt("LevelCleared", Level);
+       // }
+        
     }
-    public void LevelCleared(int nextLevel)
-    {
-        int LevelPassed = PlayerPrefs.GetInt("LevelCleared");
-        if (LevelPassed <= nextLevel)
-        {
-            PlayerPrefs.SetInt("LevelCleared", nextLevel);
-            LevelPassed = nextLevel;
-        }
-        UpdateLevel(LevelPassed);
-    }
+    //public void UpdateLevel(int numlevel)
+    //{
+    //    for (int i = 0; i < LevelButtons.Count; i++)
+    //    {
+    //        if(i<=numlevel)
+    //        {
+    //            LevelButtons[i].interactable = true;
+    //        }
+    //        else
+    //        {
+    //            LevelButtons[i].interactable = false;
+    //        }
+    //    }
+    //}
+    //public void LevelCleared(int nextLevel)
+    //{
+    //    int LevelPassed = PlayerPrefs.GetInt("LevelCleared");
+    //    if (LevelPassed <= nextLevel)
+    //    {
+    //        PlayerPrefs.SetInt("LevelCleared", nextLevel);
+    //        LevelPassed = nextLevel;
+    //    }
+    //    UpdateLevel(LevelPassed);
+    //}
 }

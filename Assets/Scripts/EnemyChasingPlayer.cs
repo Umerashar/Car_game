@@ -45,7 +45,7 @@ public class EnemyChasingPlayer : MonoBehaviour
 
             healthS.TakeDamage(Damage);
             
-            //Destroy(gameObject);
+            //Destroy(gameObject)
             Debug.Log("Enemy Hit");
 
         }

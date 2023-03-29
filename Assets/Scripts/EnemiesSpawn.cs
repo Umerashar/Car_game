@@ -17,6 +17,6 @@ public class EnemiesSpawn : MonoBehaviour
     // Update is called once per frame
    void Spawn()
     {
-        Instantiate(enemy, new Vector3(Random.Range(0f, 7.5f), Random.Range(0.641f, 0.642f), Random.Range(50f, 600f)), Quaternion.identity);
+        Instantiate(enemy, new Vector3(Random.Range(-5f, 13f), Random.Range(0.641f, 0.642f), Random.Range(50f, 600f)), Quaternion.identity);
     }
 }
