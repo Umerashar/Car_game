@@ -2,58 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    public int Level = 0;
-    public List<Button> LevelButtons = new();
+    public Button[] LevelButtons;
+
 
     private void Start()
     {
-        int LevelAt = PlayerPrefs.GetInt("LevelAt", 1);
-
-        for (int i = 0; i < LevelButtons.Count; i++)
+        int currentLevel = PlayerPrefs.GetInt("currentLevel", 2);
+        for (int i = 0; i < LevelButtons.Length; i++)
         {
-            if (i+1 > LevelAt)
-            {
+            if (i + 2 > currentLevel)
                 LevelButtons[i].interactable = false;
-            }
-        }
-       //// PlayerPrefs.DeleteKey("LevelCleared");
-       // if (PlayerPrefs.HasKey("LevelCleared"))
-       // {
-       //     UpdateLevel(PlayerPrefs.GetInt("LevelCleared"));
-
-       // }
-       // else
-       // {
-       //     UpdateLevel(Level);
-       //     PlayerPrefs.SetInt("LevelCleared", Level);
-       // }
-        
+        }    
     }
-    //public void UpdateLevel(int numlevel)
-    //{
-    //    for (int i = 0; i < LevelButtons.Count; i++)
-    //    {
-    //        if(i<=numlevel)
-    //        {
-    //            LevelButtons[i].interactable = true;
-    //        }
-    //        else
-    //        {
-    //            LevelButtons[i].interactable = false;
-    //        }
-    //    }
-    //}
-    //public void LevelCleared(int nextLevel)
-    //{
-    //    int LevelPassed = PlayerPrefs.GetInt("LevelCleared");
-    //    if (LevelPassed <= nextLevel)
-    //    {
-    //        PlayerPrefs.SetInt("LevelCleared", nextLevel);
-    //        LevelPassed = nextLevel;
-    //    }
-    //    UpdateLevel(LevelPassed);
-    //}
+    public void ResetLevel()
+    {
+        PlayerPrefs.DeleteAll();
+    }
+    public void ChangeLevel(int LevelIndex)
+    {
+        SceneManager.LoadScene(LevelIndex);
+    }
+
+    
 }

@@ -17,9 +17,9 @@ public class Finish : MonoBehaviour
         {
 
             SceneManager.LoadScene(nextSceneLoad);
-            if(nextSceneLoad> PlayerPrefs.GetInt("LevelAt"))
+            if(nextSceneLoad> PlayerPrefs.GetInt("currentLevel"))
             {
-                PlayerPrefs.SetInt("LevelAt", nextSceneLoad);
+                PlayerPrefs.SetInt("currentLevel", nextSceneLoad);
             }
 
         }
